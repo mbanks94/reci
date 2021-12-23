@@ -7,7 +7,7 @@ export const NavBar = () => {
             <div className="navbar">
                 <Themed>
                     <div className="content">
-                        <h2>reci</h2>
+                        <h2>Reci</h2>
                         
                         <div className="spacer" />
                         
