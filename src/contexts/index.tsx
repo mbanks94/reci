@@ -1,6 +1,5 @@
 import { Dispatch, ReactNode } from "react";
 import { AuthProvider } from "./auth";
-import { FilmProvider } from "./films";
 import { RecipeProvider } from "./recipes";
 import { ThemeProvider } from "./theme";
 
@@ -17,14 +16,6 @@ export interface IContext<TState, TAction> {
 export interface IProviderProps {
     children?: ReactNode | undefined;
 }
-
-export const withFilmContext = ({ children }: IProviderProps) => {
-    return (
-        <FilmProvider>
-            {children}
-        </FilmProvider>
-    );
-};
 
 export const withRecipeContext = ({ children }: IProviderProps) => {
     return (
