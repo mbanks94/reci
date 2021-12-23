@@ -1,0 +1,90 @@
+.App {
+  text-align: start;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282C34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 2rem;
+}
+
+.App-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  padding: 2rem;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.add-button {
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: rgb(123, 199, 73);
+  padding: 0 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: rgba(123, 199, 73, 0.671);
+}
+
+.film-card {
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: #CDDDDD;
+  padding: 0 1rem;
+  margin-bottom: 10px;
+  color: black;
+  cursor: pointer;
+}
+
+.film-card:hover {
+  background-color: rgba(206, 255, 173, 0.671);
+}
+
+.film-card p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.film-card .film-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
