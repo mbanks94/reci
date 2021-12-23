@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { IContext, IProviderProps } from "..";
 import { AuthAction } from "./actions";
 import { authReducer, AuthState, initialState } from "./reducer";
@@ -18,5 +18,13 @@ const AuthProvider = ({ children }: IProviderProps) => {
     );
 };
 
-export { AuthContext, AuthProvider };
+const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (context === undefined) {
+        throw new Error("Auth Context is undefined");
+    }
+    return context;
+};
+
+export { AuthContext, AuthProvider, useAuth };
 export { login, logout } from "./actions";

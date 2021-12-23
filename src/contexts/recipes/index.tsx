@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { IContext, IProviderProps } from "..";
 import { RecipeAction } from "./actions";
 import { initialState, recipeReducer, RecipeState } from "./reducer";
@@ -18,5 +18,13 @@ const RecipeProvider = ({ children }: IProviderProps) => {
     );
 };
 
-export { RecipeContext, RecipeProvider };
+const useRecipes = () => {
+    const context = useContext(RecipeContext);
+    if (context === undefined) {
+        throw new Error("Recipe Context is undefined");
+    }
+    return context;
+};
+
+export { RecipeContext, RecipeProvider, useRecipes };
 export { createRecipe, deleteRecipe, editRecipe, fetchRecipe, fetchRecipes } from "./actions";

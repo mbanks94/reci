@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { IContext, IProviderProps } from "..";
 import { ThemeAction } from "./actions";
 import { initialState, themeReducer, ThemeState } from "./reducer";
@@ -18,5 +18,13 @@ const ThemeProvider = ({ children }: IProviderProps) => {
     );
 };
 
-export { ThemeContext, ThemeProvider };
+const useTheme = () => {
+    const context = useContext(ThemeContext);
+    if (context === undefined) {
+        throw new Error("Theme Context is undefined");
+    }
+    return context;
+};
+
+export { ThemeContext, ThemeProvider, useTheme };
 export { setThemeType } from "./actions";
