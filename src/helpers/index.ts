@@ -1,4 +1,4 @@
-import { Entity, Theme, ThemeType } from "../models";
+import { Entity } from "../models";
 
 export const replaceInCollection = <T extends Entity>(
     collection: T[],
@@ -13,7 +13,6 @@ export const replaceInCollection = <T extends Entity>(
     return !!sorter ? newCollection.sort(sorter) : newCollection;
 };
 
-export const getTheme = (themeType: ThemeType): string => themeType.toLowerCase();
 // export const getTheme = (themeType: ThemeType): Theme => {
 //     switch (themeType) {
 //         case ThemeType.DARK:
