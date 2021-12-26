@@ -1,6 +1,6 @@
-export { AddButton } from "./AddButton";
-export { ListView } from "./ListView";
-export { Themed } from "./themed/Themed";
+export { AddButton } from "./buttons/AddButton";
+export { Brand } from "./brand/Brand";
+export { ListView } from "./listview/ListView";
 export { ThemeToggle } from "./toggle/ThemeToggle";
 export { Toggle } from "./toggle/Toggle";
-export { Spinner } from "./Spinner";
+export { Spinner } from "./spinner/Spinner";

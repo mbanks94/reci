@@ -1,25 +1,25 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Toggle } from "..";
-import { setThemeType, ThemeContext } from "../../../contexts/theme";
+import { useTheme } from "../../../contexts/theme";
 import { ThemeType } from "../../../models";
 import { Moon, Sun } from "../../icons";
 
 export const ThemeToggle = () => {
-    const { state, dispatch } = useContext(ThemeContext);
-    const [isToggled, setIsToggled] = useState(state.themeType === ThemeType.DARK);
+  const { theme, toggleTheme } = useTheme();
+  const [isToggled, setIsToggled] = useState(theme === ThemeType.DARK);
 
-    const toggleTheme = () => {
-        setIsToggled(!isToggled);
-        setThemeType(dispatch);
-    }
+  const toggled = () => {
+    setIsToggled(!isToggled);
+    toggleTheme();
+  };
 
-    return (
-        <>
-            <Sun />
-            <div className="spacer"/>
-            <Toggle isOn={isToggled} onClick={toggleTheme} />
-            <div className="spacer"/>
-            <Moon />
-        </>
-    );
+  return (
+    <>
+      <Sun />
+      <div className="spacer" />
+      <Toggle isOn={isToggled} onClick={toggled} />
+      <div className="spacer" />
+      <Moon />
+    </>
+  );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from ".";
+import { Spinner } from "..";
 
 interface IListView {
     title: string;
