@@ -1,28 +1,24 @@
-import { Login, Recipes } from '..';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { withRecipeContext as WithRecipeContext } from '../../contexts';
-import { NavBar } from '..';
-
-const RecipeContext = (): JSX.Element => (
-  <WithRecipeContext>
-    <Recipes />
-  </WithRecipeContext>
-);
+import { Login, Recipes, ResponsiveNavBar } from "..";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useTheme } from "../../contexts/theme";
 
 export const App = () => {
+  const { theme } = useTheme();
   return (
     <>
       <div className="App">
-        <NavBar />
+        <ResponsiveNavBar />
         <div className="App-content">
-          <Router>
-            <Routes>
-              <Route path="/auth" element={<Login />} />
-              <Route index element={RecipeContext()} />
-            </Routes>
-          </Router>
+          <div className={theme.toLowerCase()}>
+            <Router>
+              <Routes>
+                <Route path="/auth" element={<Login />} />
+                <Route index element={<Recipes />} />
+              </Routes>
+            </Router>
+          </div>
         </div>
       </div>
     </>
   );
-}
+};
