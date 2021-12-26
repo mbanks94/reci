@@ -1,46 +1,30 @@
-.navbar {
-    .light {
-        background-color: #b1bca0;
-        color: #1a1a1a;
+.nav-bar {
+  font-weight: 600;
+  .light {
+    background-color:	#8f9779;
+    // background-color: #b1bca0;
+    color: #1a1a1a;
+    
+    .appName {
+      color: #1a1a1a;
     }
+  }
 
-    .dark {
-        background-color: #20232a;
-        color: #ffffff;
+  .dark {
+    background-color: #20232a;
+    color: #ffffff;
+
+    .appName {
+      color: #ffffff;
     }
+  }
 
-    .content {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        max-height: calc(70px + 1vh);
-        font-size: calc(10px + 2vmin);
-        padding: 0 1rem;
+  .themetoggle {
+    display: flex;
+    align-items: center;
 
-        .spacer {
-            margin: 0 calc(20px + 3rem);
-        }
-
-        // .searchbar {
-        //     display: flex;
-        //     align-items: flex-end;
-
-        //     // .search {
-
-        //     // }
-
-        //     .spacer {
-        //         margin: 0 10px;
-        //     }
-        // }
-
-        .themetoggle {
-            display: flex;
-            align-items: center;
-
-            .spacer {
-                margin: 0 2px;
-            }
-        }
+    .spacer {
+      margin: 0 2px;
     }
+  }
 }

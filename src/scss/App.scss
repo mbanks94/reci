@@ -1,6 +1,32 @@
 .App {
   text-align: start;
   min-height: 100vh;
+
+  .App-content {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    min-height: 100vh;
+
+    .light {
+      background-color: #ffffff;
+    }
+
+    .dark {
+      background-color: #282c34;
+    }
+
+    .add-button {
+      border: 2px solid #1a1a1a;
+      border-radius: 10px;
+      background-color: rgb(123, 199, 73);
+      padding: 0 1rem;
+      color: #1a1a1a;
+      cursor: pointer;
+      text-align: center;
+      
+    }
+  }
 }
 
 .App-logo {
@@ -15,7 +41,7 @@
 }
 
 .App-header {
-  background-color: #282C34;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,57 +50,23 @@
   padding: 2rem;
 }
 
-.App-content {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  padding: 2rem;
-}
-
-.page-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-}
-
-.add-button {
-  border: 3px solid black;
-  border-radius: 10px;
-  background-color: rgb(123, 199, 73);
-  padding: 0 1rem;
-  color: black;
-  cursor: pointer;
-}
-
 .add-button:hover {
   background-color: rgba(123, 199, 73, 0.671);
 }
 
-.film-card {
-  border: 3px solid black;
-  border-radius: 10px;
-  background-color: #CDDDDD;
-  padding: 0 1rem;
-  margin-bottom: 10px;
-  color: black;
-  cursor: pointer;
-}
+// .film-card {
+//   border: 3px solid black;
+//   border-radius: 10px;
+//   background-color: #CDDDDD;
+//   padding: 0 1rem;
+//   margin-bottom: 10px;
+//   color: black;
+//   cursor: pointer;
+// }
 
-.film-card:hover {
-  background-color: rgba(206, 255, 173, 0.671);
-}
-
-.film-card p {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.film-card .film-title {
-  font-size: 20px;
-  font-weight: 700;
-}
+// .film-card:hover {
+//   background-color: rgba(206, 255, 173, 0.671);
+// }
 
 .App-link {
   color: #61dafb;
