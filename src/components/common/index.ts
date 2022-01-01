@@ -1,7 +1,7 @@
-export { AddButton } from "./buttons/AddButton";
-export { Brand } from "./brand/Brand";
-export { ListView } from "./listview/ListView";
-export { SearchBar } from "./search/SearchBar";
-export { Spinner } from "./spinner/Spinner";
+export { AddButton } from "./buttons";
+export { Brand } from "./brand";
+export { ListView } from "./listview";
+export { SearchBar } from "./search";
+export { Spinner } from "./spinner";
 export { ThemeToggle } from "./toggle/ThemeToggle";
 export { Toggle } from "./toggle/Toggle";

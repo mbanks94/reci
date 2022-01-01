@@ -1,23 +1,28 @@
-import { Login, Recipes, ResponsiveNavBar } from "..";
+import { Login, Recipes, NavBar } from "..";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useTheme } from "../../contexts/theme";
+import _ from "lodash";
 
 export const App = () => {
-  const { theme } = useTheme();
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  window.addEventListener("resize", () => {
+    vh = window.innerHeight * 0.01;
+    debouncedSetViewportHeight(vh);
+  });
+  const debouncedSetViewportHeight = _.debounce((vh: number) => {
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }, 100);
+
   return (
     <>
-      <div className="App">
-        <ResponsiveNavBar />
-        <div className="App-content">
-          <div className={theme.toLowerCase()}>
-            <Router>
-              <Routes>
-                <Route path="/auth" element={<Login />} />
-                <Route index element={<Recipes />} />
-              </Routes>
-            </Router>
-          </div>
-        </div>
+      <NavBar />
+      <div className="app-container">
+        <Router>
+          <Routes>
+            <Route path="/auth" element={<Login />} />
+            <Route index element={<Recipes />} />
+          </Routes>
+        </Router>
       </div>
     </>
   );
