@@ -1,0 +1,39 @@
+@import "colors";
+
+.add-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .add-btn {
+    background: lighten($secondary, 3%);
+    border: 1px solid darken($secondary, 4%);
+    font-weight: 900;
+    transition: all 150ms linear;
+  }
+
+  .add-btn:hover {
+    background: darken($secondary, 1.5%);
+    border: 1px solid rgba(#000, 0.05);
+    color: $primary;
+    transition: all 250ms linear;
+  }
+}
+
+.recipe-box {
+  margin-top: 50px;
+  height: 400px;
+  background-color: $box;
+
+  .recipe {
+    height: 200px;
+    position: relative;
+    border: 1px solid #1a1a1a;
+    bottom: 0;
+    transition: all 0.5s;
+  }
+
+  .recipe:hover {
+    transform: translateY(-60px);
+  }
+}

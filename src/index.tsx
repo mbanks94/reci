@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './scss/main.scss';
 import { App } from './components';
 import { withAppContext as AppContext } from './contexts';
 import reportWebVitals from './reportWebVitals';

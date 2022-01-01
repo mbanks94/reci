@@ -1,0 +1,86 @@
+@import "colors";
+
+.nav-bar {
+  padding: 0 1.725rem;
+
+  @media (max-width: 1200px) {
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0;
+  }
+
+  .brand {
+    font-size: 4rem;
+    font-weight: 600;
+    color: $primary;
+    margin-right: -20px;
+  }
+
+  .search-bar {
+    background: lighten($primary, 3%);
+    border-radius: 50px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.5s;
+
+    @media (max-width: 425px) {
+      padding: 5px 10px;
+    }
+
+    .search-icon {
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      transition: 1s;
+
+      @media (max-width: 425px) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    .search-input {
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+      color: white;
+      font-size: 2rem;
+      transition: 0.4s;
+      line-height: 50px;
+      width: 0;
+
+      @media (max-width: 1200px) {
+        font-size: calc(2rem - 2vw);
+      }
+  
+      @media (max-width: 425px) {
+        font-size: 1rem;
+        line-height: 30px;
+      }
+    }
+
+    ::placeholder {
+      color: white;
+    }
+  }
+
+  .search-bar:hover {
+    gap: 10px;
+
+    @media (max-width: 320px) {
+      margin-right: -10px;
+    }
+  }
+
+  .search-bar:hover > .search-input {
+    width: 160px;
+    padding-left: 10px;
+    border-radius: 12px;
+  }
+}

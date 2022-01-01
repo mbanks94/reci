@@ -1,0 +1,62 @@
+@use "font-faces";
+@use "navBar";
+@use "recipes";
+@use "toggle";
+
+@import "colors";
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap");
+@import "~bootstrap/scss/bootstrap";
+
+$font-family-base: "Nunito Sans", sans-serif;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-family: $font-family-base !important;
+  background-color: $body-color;
+}
+
+html,
+body,
+#root,
+.App {
+  height: calc(100vh - 135px);
+  height: calc(var(--vh, 1vh) * 100 - 135px);
+}
+
+.app-container {
+  margin-top: 25px;
+  min-height: 300px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.btn {
+  color: lighten($primary, 48%);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 0 2em;
+  padding: 0;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    margin: 0 1em 2em;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
