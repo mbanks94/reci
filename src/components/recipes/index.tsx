@@ -8,10 +8,10 @@ export const Recipes = () => {
 
   return (
     <>
-      <div className="add-container">
-        <AddButton onClick={addRecipe} text="Add a recipe" />
-      </div>
       <RecipeBox />
+      {/* <div className="add-container mt-50">
+        <AddButton onClick={addRecipe} text="Add a recipe" />
+      </div> */}
     </>
   );
 };

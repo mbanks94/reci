@@ -3,58 +3,8 @@ import { Recipe } from "../../models";
 import { RecipeAction, RecipeActionType } from "./actions";
 
 export interface RecipeState {
-  recipe?: Recipe;
   recipes: Recipe[];
 }
-
-export const initialState: RecipeState = {
-  recipes: [
-    {
-      id: 0,
-      url: "",
-      name: "Fish Tacos",
-      short_description: "",
-      long_description: "",
-      nutritional_facts: [],
-      ingredients: [],
-      steps: [],
-      notes: [],
-    },
-    {
-      id: 1,
-      url: "",
-      name: "Pork Chops",
-      short_description: "",
-      long_description: "",
-      nutritional_facts: [],
-      ingredients: [],
-      steps: [],
-      notes: [],
-    },
-    {
-      id: 2,
-      url: "",
-      name: "Chicken Nuggets",
-      short_description: "",
-      long_description: "",
-      nutritional_facts: [],
-      ingredients: [],
-      steps: [],
-      notes: [],
-    },
-    {
-      id: 3,
-      url: "",
-      name: "Brava Sauce",
-      short_description: "",
-      long_description: "",
-      nutritional_facts: [],
-      ingredients: [],
-      steps: [],
-      notes: [],
-    },
-  ],
-};
 
 export const recipeReducer = (
   state: RecipeState,
@@ -65,39 +15,50 @@ export const recipeReducer = (
     case RecipeActionType.RECIPE_CREATED:
       return {
         ...state,
-        recipe: payload as Recipe,
-        recipes: [...state.recipes, payload as Recipe],
+        recipes: sortRecipes([...state.recipes, payload as Recipe]),
       };
     case RecipeActionType.RECIPE_DELETED:
+      const ogRecipe = state.recipes.find(
+        ({ id }) => id === (payload as Recipe).id
+      );
       return {
         ...state,
-        recipe: undefined,
-        recipes: [
-          ...state.recipes.filter(({ id }) => id !== (payload as Recipe).id),
-        ],
+        recipes: replaceRecipeInCollection(
+          state.recipes,
+          ogRecipe!,
+          payload as Recipe
+        ),
       };
     case RecipeActionType.RECIPE_EDITED:
       return {
         ...state,
-        recipe: undefined,
-        recipes: replaceInCollection(
+        recipes: replaceRecipeInCollection(
           state.recipes,
           (payload as Recipe[])[0],
-          (payload as Recipe[])[1],
-          (a, b) => a.name.localeCompare(b.name)
+          (payload as Recipe[])[1]
         ),
-      };
-    case RecipeActionType.RECIPE_FETCHED:
-      return {
-        ...state,
-        recipe: payload as Recipe,
       };
     case RecipeActionType.RECIPES_FETCHED:
       return {
         ...state,
-        recipes: payload as Recipe[],
+        recipes: sortRecipes([...(payload as Recipe[])]),
       };
     default:
       return state;
   }
+};
+
+const compareRecipes = (a: Recipe, b: Recipe): number =>
+  a.name.localeCompare(b.name);
+
+const sortRecipes = (recipes: Recipe[]): Recipe[] => {
+  return recipes.sort(compareRecipes);
+};
+
+const replaceRecipeInCollection = (
+  recipes: Recipe[],
+  ogRecipe: Recipe,
+  newRecipe: Recipe
+): Recipe[] => {
+  return replaceInCollection(recipes, ogRecipe, newRecipe, compareRecipes);
 };

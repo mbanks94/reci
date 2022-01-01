@@ -32,9 +32,18 @@ body,
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-bottom: 20px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mt-50 {
+  margin-top: 50px;
 }
 
 .btn {
