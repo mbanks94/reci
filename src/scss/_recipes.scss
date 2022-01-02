@@ -38,7 +38,8 @@ $speed: 1s;
     justify-content: center;
     transform-style: preserve-3d;
     transition: transform $speed;
-    transform: rotateY(-15deg) rotateX(-10deg) rotateZ(2deg) translateZ(-400px) translateX(-150px) translateY(125px);
+    transform: rotateY(-15deg) rotateX(-10deg) rotateZ(2deg) translateZ(-400px)
+      translateX(-150px) translateY(125px);
 
     .face {
       border-radius: 5px;
@@ -69,7 +70,7 @@ $speed: 1s;
       }
 
       .back {
-        transform: rotateY(180deg) translateZ(200px);
+        transform: rotateY(180deg) translateZ(300px);
       }
 
       .left {
@@ -78,9 +79,9 @@ $speed: 1s;
       }
 
       .top {
-        height: 300px;
+        height: 400px;
         border-radius: 0;
-        transform: rotateX(90deg) translateY(-50px) translateZ(150px);
+        transform: rotateX(90deg) translateY(-100px) translateZ(200px);
       }
     }
 
