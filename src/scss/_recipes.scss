@@ -122,7 +122,7 @@ $speed: 1s;
     }
 
     .lid-open {
-      transform: translateX(1px) translateY(-150px) translateZ(-250px)
+      transform: translateY(-250px) translateX(1px) translateZ(-350px)
         rotateX(90deg);
     }
   }
