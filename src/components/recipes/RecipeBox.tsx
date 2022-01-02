@@ -3,7 +3,7 @@ import { useState } from "react";
 export const RecipeBox = () => {
   // const { getRecipes, recipeState } = useRecipes();
   // const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [boxLid, setBoxLid] = useState("closed");
+  const [lidState, setLidState] = useState<"open" | "closed">("closed");
 
   // useEffect(() => {
   //   getRecipes();
@@ -14,33 +14,33 @@ export const RecipeBox = () => {
   // }, [recipeState]);
 
   const handleLidClick = () => {
-    if (boxLid === "closed") {
-      setBoxLid("open");
+    if (lidState === "closed") {
+      setLidState("open");
     } else {
-      setBoxLid("closed");
+      setLidState("closed");
     }
   };
 
   return (
     <>
-      <div className="scene mt-25">
-        <div className={`box-lid ${boxLid}`} onClick={handleLidClick}>
-          <div className="face lid front">click me</div>
-          <div className="face lid back" />
-          <div className="face lid right" />
-          <div className="face lid left" />
-          <div className="face lid top" />
-        </div>
+      <div className="scene mt-100" onClick={handleLidClick}>
+        <div className="box">
+          <div className={`box-lid lid-${lidState}`}>
+            <div className="face lid front" />
+            <div className="face lid back" />
+            <div className="face lid right" />
+            <div className="face lid left" />
+            <div className="face lid top" />
+          </div>
 
-        <div className="box-btm">
-          <div className="face btm front" />
-          <div className="face btm" />
-          <div className="face btm right" />
-          <div className="face btm left" />
-          <div className="face btm bottom" />
+          <div className="box-btm">
+            <div className="face btm front" />
+            <div className="face btm back" />
+            <div className="face btm right" />
+            <div className="face btm left" />
+            <div className="face btm bottom" />
+          </div>
         </div>
-        {/* <div className="box">  
-        </div> */}
       </div>
       {/* <div className="recipe-box mt-25">
         <div className="box-lid"></div>
