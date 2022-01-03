@@ -1,0 +1,90 @@
+[
+  {
+    "id": 0,
+    "url": "",
+    "name": "Hot Dog",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 1,
+    "url": "",
+    "name": "Cheese String",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 2,
+    "url": "",
+    "name": "Chimken Nugget",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 3,
+    "url": "",
+    "name": "Apple",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 4,
+    "url": "",
+    "name": "Grilled Cheese",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 5,
+    "url": "",
+    "name": "Pizza",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 6,
+    "url": "",
+    "name": "Poutine",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  },
+  {
+    "id": 7,
+    "url": "",
+    "name": "Short Rib",
+    "short_description": "",
+    "long_description": "",
+    "nutritional_facts": [],
+    "ingredients": [],
+    "steps": [],
+    "notes": []
+  }
+]
