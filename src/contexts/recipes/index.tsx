@@ -9,6 +9,7 @@ import { IProviderProps } from "..";
 import { Recipe } from "../../models";
 import { RecipeActionType } from "./actions";
 import { recipeReducer, RecipeState } from "./reducer";
+import { useFetch } from "../../hooks";
 
 const initialState: RecipeState = {
   recipes: [],
@@ -26,21 +27,19 @@ const RecipeContext = createContext<IRecipeContext>({} as IRecipeContext);
 
 const RecipeProvider = ({ children }: IProviderProps) => {
   const [recipeState, dispatch] = useReducer(recipeReducer, initialState);
+  const { fetchState, setUrl, get } = useFetch<Recipe>("recipes.json");
 
   const getRecipes = useCallback(async () => {
-    const recipes: Recipe[] = await fetch("recipes.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }).then((res) => res.json());
+    await get();
 
-    dispatch({
-      type: RecipeActionType.RECIPES_FETCHED,
-      payload: recipes,
-    });
-  }, []);
-  
+    if (!fetchState.isError) {
+      dispatch({
+        type: RecipeActionType.RECIPES_FETCHED,
+        payload: fetchState.data,
+      });
+    }
+  }, [fetchState, get]);
+
   const createRecipe = useCallback(() => {}, []);
   const deleteRecipe = useCallback(() => {}, []);
   const editRecipe = useCallback(() => {}, []);
