@@ -2,6 +2,7 @@ import {
   Dispatch,
   SetStateAction,
   useCallback,
+  useEffect,
   useMemo,
   useReducer,
   useState,
@@ -12,10 +13,10 @@ import { IFetchReducer, reducer } from "./reducer";
 export interface FetchState<T> {
   isLoading: boolean;
   isError: boolean;
-  data: T | undefined;
+  data: T | T[] | undefined;
 }
 
-export interface IUseFetch<T> {
+interface IUseFetch<T> {
   fetchState: FetchState<T>;
   setUrl: Dispatch<SetStateAction<string>>;
   get: () => Promise<void>;
@@ -24,7 +25,7 @@ export interface IUseFetch<T> {
   del: () => Promise<void>;
 }
 
-export const useFetch = <T>(): IUseFetch<T> => {
+export const useFetch = <T>(initialUrl?: string): IUseFetch<T> => {
   const initialState: FetchState<T> = {
     isLoading: false,
     isError: false,
@@ -32,6 +33,13 @@ export const useFetch = <T>(): IUseFetch<T> => {
   };
 
   const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (!!initialUrl) {
+      setUrl(initialUrl);
+    }
+  }, [initialUrl]);
+
   const [fetchState, dispatch] = useReducer<IFetchReducer<T>>(
     reducer,
     initialState
@@ -49,8 +57,8 @@ export const useFetch = <T>(): IUseFetch<T> => {
       type: FetchActionType.FAILURE,
     });
   }, []);
-  
-  const fetchSuccess = useCallback((payload: T) => {
+
+  const fetchSuccess = useCallback((payload: T | T[]) => {
     dispatch({
       type: FetchActionType.SUCCESS,
       payload: payload,
@@ -62,7 +70,7 @@ export const useFetch = <T>(): IUseFetch<T> => {
     try {
       const response = (await fetch(url, getRequestInit("GET")).then(
         async (res) => await handleResponse(res)
-      )) as T;
+      )) as T[];
       fetchSuccess(response);
     } catch (error) {
       fetchError(error);
@@ -142,7 +150,7 @@ interface ErrorResponse {
   statusCode: number;
   message: string;
 }
-const handleResponse = <T>(res: Response): Promise<T> | undefined => {
+const handleResponse = (res: Response): Promise<any> | undefined => {
   if (!res.ok) {
     const errorRes: ErrorResponse = {
       statusCode: res.status,
