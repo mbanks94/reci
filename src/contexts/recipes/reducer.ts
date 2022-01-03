@@ -49,7 +49,7 @@ export const recipeReducer = (
 };
 
 const compareRecipes = (a: Recipe, b: Recipe): number =>
-  a.name.localeCompare(b.name);
+  b.name.localeCompare(a.name);
 
 const sortRecipes = (recipes: Recipe[]): Recipe[] => {
   return recipes.sort(compareRecipes);
