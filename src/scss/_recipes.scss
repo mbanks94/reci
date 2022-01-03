@@ -21,6 +21,7 @@
 }
 
 $speed: 1s;
+$half-speed: 0.5s;
 
 // TODO handle screen width under 700px
 .scene {
@@ -91,7 +92,6 @@ $speed: 1s;
       position: relative;
       transform-style: preserve-3d;
       transition: transform $speed;
-      // transform: translateZ(-400px) rotateX(-15deg) rotateY(45deg);
 
       .btm {
         position: absolute;
@@ -119,22 +119,34 @@ $speed: 1s;
       .bottom {
         transform: rotateX(-90deg) translateY(50px) translateZ(150px);
       }
+
+      .recipe-cards {
+        height: 300px;
+        width: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform $half-speed;
+        transform: translateY(-20px) translateZ(80px);
+
+        .recipe-card {
+          height: 320px;
+          width: 100%;
+          position: absolute;
+          background: $light;
+          color: $text-dark;
+          border: 1px solid #1a1a1a;
+          transition: transform $half-speed;
+        }
+
+        .recipe-card:hover {
+          transform: translateY(-50px);
+        }
+      }
     }
 
     .lid-open {
-      transform: rotateX(90deg) translateZ(250px) translateY(-340px) translateX(1px);
+      transform: rotateX(90deg) translateZ(250px) translateY(-340px)
+        translateX(1px);
     }
-  }
-
-  .recipe {
-    height: 200px;
-    position: relative;
-    border: 1px solid #1a1a1a;
-    bottom: 0;
-    transition: all 0.5s;
-  }
-
-  .recipe:hover {
-    transform: translateY(-60px);
   }
 }
