@@ -1,26 +1,31 @@
-import { User } from "../../models";
-import { AuthAction, AuthActionType } from "./actions";
-
-export interface AuthState {
-    user: User | undefined;
-}
+import { AuthActions } from "./actions";
+import { AuthActionType } from "./actions";
+import { AuthState } from "./context";
 
 export const initialState: AuthState = {
-    user: undefined
+    accessToken: ""
 };
 
-export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
-    const { type, payload } = action;
+export const reducer = (
+    state: AuthState,
+    { type, payload }: AuthActions
+): AuthState => {
     switch (type) {
-        case AuthActionType.USER_LOGGED_IN:
+        case AuthActionType.SET_ACCESS_TOKEN:
             return {
                 ...state,
-                user: payload as User,
+                accessToken: payload ?? "",
             };
-        case AuthActionType.USER_LOGGED_OUT:
+        case AuthActionType.SET_USER:
             return {
                 ...state,
-                user: undefined,
+                user: payload,
+            };
+        case AuthActionType.SUCCESSFUL_LOGIN:
+            return {
+                ...state,
+                accessToken: payload.accessToken,
+                user: payload.user,
             };
         default:
             return state;

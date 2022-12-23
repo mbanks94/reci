@@ -1,24 +1,24 @@
-import { IAction } from "..";
 import { User } from "../../models";
 
 export enum AuthActionType {
-    USER_LOGGED_IN = "USER_LOGGED_IN",
-    USER_LOGGED_OUT = "USER_LOGGED_OUT",
+    SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN",
+    SET_USER = "SET_USER",
+    SUCCESSFUL_LOGIN = "SUCCESSFUL_LOGIN",
 }
 
-export interface AuthAction
-    extends IAction<AuthActionType, User> { }
+export type SetAccessTokenAction = {
+    type: AuthActionType.SET_ACCESS_TOKEN,
+    payload?: string;
+}
 
-export const login = (user: User, dispatch: (action: AuthAction) => void) => {
-    dispatch({
-        type: AuthActionType.USER_LOGGED_IN,
-        payload: user,
-    });
-};
+export type SetUserAction = {
+    type: AuthActionType.SET_USER,
+    payload?: User;
+}
 
-export const logout = (user: User, dispatch: (action: AuthAction) => void) => {
-    dispatch({
-        type: AuthActionType.USER_LOGGED_OUT,
-        payload: user,
-    });
-};
+export type SuccessfulLoginAction = {
+    type: AuthActionType.SUCCESSFUL_LOGIN,
+    payload: { accessToken: string; user: User; };
+}
+
+export type AuthActions = SetAccessTokenAction | SetUserAction | SuccessfulLoginAction;

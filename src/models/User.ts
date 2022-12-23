@@ -1,7 +1,7 @@
-import { Credentials } from "./Credentials";
-
 export interface User {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
-    credentials: Credentials;
 }
+
+export const getUserFullname = (user?: User) => user ? `${user.firstName} ${user.lastName}` : "";

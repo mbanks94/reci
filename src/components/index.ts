@@ -1,4 +1,4 @@
 export { App } from "./app/App";
-export { Login } from "./auth/Login";
-export { Recipes } from "./recipes";
+export { Login } from "./login/Login";
 export { NavBar } from "./navbar";
+export { Recipes } from "./recipes";

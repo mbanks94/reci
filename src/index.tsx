@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import { createRoot } from 'react-dom/client';
 import './scss/main.scss';
 import { App } from './components';
-import { withAppContext as AppContext } from './contexts';
+import { AppContextProvider } from './contexts/app/AppContextProvider';
 import reportWebVitals from './reportWebVitals';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './api';
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!);
+
+root.render(
   <React.StrictMode>
-    <AppContext>
-      <App />
-    </AppContext>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <QueryClientProvider client={queryClient}>
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

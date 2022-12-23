@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from "react";
-import { IProviderProps } from "..";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { ThemeType } from "../../models";
 
 interface IThemeContext {
@@ -9,7 +8,7 @@ interface IThemeContext {
 
 const ThemeContext = createContext({} as IThemeContext);
 
-const ThemeProvider = ({ children }: IProviderProps) => {
+const ThemeProvider = (props: PropsWithChildren) => {
   const [theme, setTheme] = useState(ThemeType.LIGHT);
   const toggleTheme = () => {
     switch (theme) {
@@ -23,11 +22,7 @@ const ThemeProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, toggleTheme }} {...props} />;
 };
 
 const useTheme = () => {
