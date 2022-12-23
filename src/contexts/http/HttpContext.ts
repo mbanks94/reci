@@ -1,4 +1,3 @@
-import { AxiosError, AxiosResponse } from "axios";
 import { createContext } from "react";
 import { UseInfiniteQueryResult, UseMutationResult, UseQueryOptions, UseQueryResult } from "react-query";
 import { Page } from "../../models";
@@ -29,11 +28,11 @@ export type UseMutationArgs<T, S> = {
 };
 
 export type HttpContext = {
-    useDelete: <T>(args: UseDeleteArgs<T>) => any;
+    useDelete: <T>(args: UseDeleteArgs<T>) => UseMutationResult<string | number, unknown, string | number | T, unknown>;
     useFetch: <T>(args: UseFetchArgs<T>) => UseQueryResult<T, Error>,
     useLoadMore: <T>(args: UseLoadMoreArgs) => UseInfiniteQueryResult<Page<T>, Error>,
-    usePost: <T, S>(args: UseMutationArgs<T, S>) => any;
-    usePut: <T, S>(args: UseMutationArgs<T, S>) => any;
+    usePatch: <T, S>(args: UseMutationArgs<T, S>) => UseMutationResult<S, unknown, T | S, unknown>;
+    usePost: <T, S>(args: UseMutationArgs<T, S>) => UseMutationResult<S, unknown, T | S, unknown>;
 };
 
 export const HttpContext = createContext<HttpContext | undefined>(undefined);

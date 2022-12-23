@@ -100,17 +100,23 @@ export const HttpContextProvider = (props: PropsWithChildren) => {
             ...args,
         });
     };
-    
+
     const usePost = <T, S>(args: UseMutationArgs<T, S>) => {
         return useGenericMutation<T, S>({
-            mutationFn: (data) => api.post<S>(args.url, data).then(res => res.data),
+            mutationFn: async (data) => {
+                const res = await api.post<S>(args.url, data);
+                return res.data;
+            },
             ...args,
         });
     };
-    
-    const usePut = <T, S>(args: UseMutationArgs<T, S>) => {
+
+    const usePatch = <T, S>(args: UseMutationArgs<T, S>) => {
         return useGenericMutation<T, S>({
-            mutationFn: (data) => api.patch<S>(args.url, data).then(res => res.data),
+            mutationFn: async (data) => {
+                const res = await api.patch<S>(args.url, data);
+                return res.data;
+            },
             ...args,
         });
     };
@@ -120,7 +126,7 @@ export const HttpContextProvider = (props: PropsWithChildren) => {
         useFetch,
         useLoadMore,
         usePost,
-        usePut,
+        usePatch,
     };
 
     return <HttpContext.Provider value={value} {...props} />
